@@ -90,5 +90,5 @@ MIT
 ---
 
 > [test.com](https://www.test.com) &nbsp;&middot;&nbsp;
-> GitHub [@test](https://github.com/test) &nbsp;&middot;&nbsp;
+> GitHub [@test](https://github.com/yellac) &nbsp;&middot;&nbsp;
 > Twitter [@test](https://twitter.com/test)

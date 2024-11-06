@@ -1,5 +1,7 @@
 import express, { Request, Response, RequestHandler } from "express";
 import { body, validationResult } from "express-validator";
+import { RequestValidationError } from "../errors/request-validation-error";
+import { DatabaseConnectionError } from "../errors/database-connection-error";
 
 const router = express.Router();
 
@@ -7,16 +9,16 @@ const signupHandler: RequestHandler = (req: Request, res: Response) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
-    console.log("Validation errors: ", errors.array());
+    // console.log("Validation errors: ", errors.array());
     const extractedErrors = errors.array().map((err) => ({ message: err.msg }));
-    res.status(400).json({ errors: extractedErrors });
-    return;
+    throw new RequestValidationError(errors.array());
+    // res.status(400).json({ errors: extractedErrors });
+    // return;
   }
 
   const { email, password } = req.body;
-  console.log("Creating a user..", { email, password });
+  throw new DatabaseConnectionError();
   res.status(201).send({});
-  console.log("Response sent");
 };
 
 router.post(
