@@ -1,24 +1,32 @@
-import express, { Request, Response, RequestHandler } from "express";
+import express, { Request, Response } from "express";
 import { body, validationResult } from "express-validator";
+import { User } from "../models/user";
 import { RequestValidationError } from "../errors/request-validation-error";
-import { DatabaseConnectionError } from "../errors/database-connection-error";
 
 const router = express.Router();
 
-const signupHandler: RequestHandler = (req: Request, res: Response) => {
+const signupHandler = async (req: Request, res: Response): Promise<void> => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
-    // console.log("Validation errors: ", errors.array());
-    const extractedErrors = errors.array().map((err) => ({ message: err.msg }));
     throw new RequestValidationError(errors.array());
-    // res.status(400).json({ errors: extractedErrors });
-    // return;
   }
 
   const { email, password } = req.body;
-  throw new DatabaseConnectionError();
-  res.status(201).send({});
+
+  const existingUser = await User.findOne({ email });
+
+  if (existingUser) {
+    console.log("Email in use");
+    res.send({});
+    return;
+  }
+
+  const user = User.build({ email, password });
+  await user.save();
+
+  res.status(201).send(user);
+  return;
 };
 
 router.post(
