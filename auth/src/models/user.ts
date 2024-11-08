@@ -1,4 +1,5 @@
 import mongoose, { Schema, Document, Model } from "mongoose";
+import { Password } from "../services/password";
 
 // Type for User attributes required for creation
 type UserAttrs = {
@@ -23,6 +24,15 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+});
+
+userSchema.pre("save", async function (next) {
+  // Only hash the password if it has been modified
+  if (this.isModified("password")) {
+    const hashed = await Password.toHash(this.get("password"));
+    this.set("password", hashed);
+  }
+  next();
 });
 
 userSchema.statics.build = (attrs: UserAttrs) => {
