@@ -15,16 +15,28 @@ interface UserModel extends Model<UserDoc> {
   build(attrs: UserAttrs): UserDoc;
 }
 
-const userSchema = new Schema({
-  email: {
-    type: String,
-    required: true,
+const userSchema = new Schema(
+  {
+    email: {
+      type: String,
+      required: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
   },
-  password: {
-    type: String,
-    required: true,
-  },
-});
+  {
+    toJSON: {
+      versionKey: false,
+      transform(doc, ret) {
+        ret.id = ret._id;
+        delete ret._id;
+        delete ret.password;
+      },
+    },
+  }
+);
 
 userSchema.pre("save", async function (next) {
   // Only hash the password if it has been modified
