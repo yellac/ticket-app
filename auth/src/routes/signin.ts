@@ -11,7 +11,6 @@ const router = express.Router();
 
 const signinHandler = async (req: Request, res: Response) => {
   const { email, password } = req.body;
-
   const existingUser = await User.findOne({ email });
 
   if (!existingUser) {
@@ -45,7 +44,7 @@ const signinHandler = async (req: Request, res: Response) => {
   //     throw new BadRequestError("Invalid JWT token");
   //   }
 
-  res.status(200).send("Successfully signed in!");
+  res.status(200).send(existingUser);
 };
 
 router.post(
