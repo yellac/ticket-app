@@ -1,4 +1,5 @@
 import mongoose, { Schema, Document, Model } from "mongoose";
+
 import { Password } from "../services/password";
 
 // Type for User attributes required for creation
