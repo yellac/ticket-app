@@ -36,14 +36,6 @@ const signinHandler = async (req: Request, res: Response) => {
     jwt: userJwt,
   };
 
-  //   if (!req.session) {
-  //     throw new BadRequestError("Session not found");
-  //   }
-  //   const jwtMatch = jwt.verify(req.session.jwt, process.env.JWT_KEY!);
-  //   if (!jwtMatch) {
-  //     throw new BadRequestError("Invalid JWT token");
-  //   }
-
   res.status(200).send(existingUser);
 };
 

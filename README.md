@@ -70,8 +70,11 @@ $ npm start
 
 This software uses the following open source packages:
 
-- [Electron](http://electron.atom.io/)
 - [Node.js](https://nodejs.org/)
+- [Express.js](https://expressjs.com/)
+- []
+
+- [Electron](http://electron.atom.io/)
 - [Marked - a markdown parser](https://github.com/chjj/marked)
 - [showdown](http://showdownjs.github.io/showdown/)
 - [CodeMirror](http://codemirror.net/)
