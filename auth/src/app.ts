@@ -16,7 +16,7 @@ app.use(json());
 app.use(
   cookieSession({
     signed: false, // Don't hash the cookie content (JWT is already signed)
-    secure: true, // Send cookie only over HTTPS (requires trust proxy)
+    secure: process.env.NODE_ENV !== "test", // Send cookie only over HTTPS (requires trust proxy)
   })
 );
 
