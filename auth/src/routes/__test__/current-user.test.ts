@@ -21,6 +21,5 @@ it("responds with null if not authenticated", async () => {
     .get("/api/users/currentuser")
     .send()
     .expect(200);
-  console.log(response.body);
   expect(response.body.currentUser).toEqual(null);
 });
