@@ -14,6 +14,8 @@ declare global {
   }
 }
 
+// Check incoming request session property for jwt
+// If there is a jwt, decode it and add the decoded payload to the request object
 export const currentUser = (
   req: Request,
   res: Response,
