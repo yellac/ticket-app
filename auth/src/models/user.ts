@@ -28,8 +28,10 @@ const userSchema = new Schema(
     },
   },
   {
+    // When serializing a document from this schema (e.g. JSON.stringify()),
+    // the returned JSON will follow the transformed structure instead
     toJSON: {
-      versionKey: false,
+      versionKey: false, // delete ret.__v
       transform(doc, ret) {
         ret.id = ret._id;
         delete ret._id;
@@ -48,6 +50,7 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
+// For TypeScript to figure out the attrs types
 userSchema.statics.build = (attrs: UserAttrs) => {
   return new User(attrs);
 };

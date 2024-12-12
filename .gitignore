@@ -12,11 +12,11 @@ node_modules
 .next
 out
 
-# optional REPL hisotry
+# optional REPL history
 .node_repl_history
 
 # optional npm cache directory
 .npm
 
-# TypeScript cache
-*.tsbuildinfo
+# TypeScript 
+build
