@@ -4,8 +4,10 @@ manifests:
   rawYaml:
     - ./infra/k8s/*
 build:
+  # Local build
   # local:
   #   push: false
+  # Google Cloud Build
   googleCloudBuild:
     projectId: ticketing-dev-440705
   artifacts:
@@ -23,5 +25,15 @@ build:
         dockerfile: Dockerfile
       sync:
         manual:
-          - src: "**/*.js"
+          - src: "**/*.ts"
+            dest: .
+          - src: "**/*.tsx"
+            dest: .
+    - image: gcr.io/ticketing-dev-440705/tickets
+      context: tickets
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
             dest: .
