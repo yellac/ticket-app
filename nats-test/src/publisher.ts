@@ -1,4 +1,5 @@
 import nats from "node-nats-streaming";
+import { TicketCreatedPublisher } from "./events/ticket-created-publisher";
 
 console.clear();
 
@@ -9,13 +10,10 @@ const stan = nats.connect("ticketing", "abc", {
 stan.on("connect", () => {
   console.log("Publisher connected to NATS Streaming Server");
 
-  const data = JSON.stringify({
+  const publisher = new TicketCreatedPublisher(stan);
+  publisher.publish({
     id: "123",
-    title: "Linkin Park World Tour",
+    title: "Likin Park World Tour",
     price: 999,
-  });
-
-  stan.publish("ticket:created", data, () => {
-    console.log("Event published!");
   });
 });
