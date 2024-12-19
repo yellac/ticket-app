@@ -80,11 +80,13 @@ This software uses the following open source packages:
 - [![Express][Express]][Express-url]
 - [![Next][Next.js]][Next-url]
 - [![React][React.js]][React-url]
+- [![MongoDB][MongoDB]][MongoDB-url]
 - [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 - [![Docker][Docker]][Docker-url]
 - [![Kubernetes][Kubernetes]][Kubernetes-url]
 - [![GCP][GCP]][GCP-url]
 - [![JWT][JWT]][JWT-url]
+- [![Jest][Jest]][Jest-url]
 - [NATS](https://nats.io/)
 
 > [test.com](https://www.test.com) &nbsp;&middot;&nbsp;
@@ -124,3 +126,7 @@ This software uses the following open source packages:
 [Express-url]: https://expressjs.com/
 [NodeJS]: https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white
 [NodeJS-url]: https://nodejs.org/en
+[Jest]: https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white
+[Jest-url]: https://jestjs.io/
+[MongoDB]: https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white
+[MongoDB-url]: https://www.mongodb.com/
